@@ -1,0 +1,52 @@
+#:kivy 2.2.1
+
+<Frog>: ##Custom class
+    MDCard: ##Card with pinkish background
+        line_color: 0.2, 0.2, 0.2, 0.8
+        style: 'elevated'
+        size_hint:(.5, .7)
+        padding: "-35dp"
+        md_bg_color:"#f6eeee"
+        shadow_softness:2
+        shadow_offset:(0, 1)
+        pos_hint: {"center_y": .5}
+        text: ""
+        MDRelativeLayout: ##Container for smaller white card
+            size_hint: (.5, .6)
+            MDCard: ##Smaller white card
+                line_color:(0.2, 0.2, 0.2, 0.8)
+                style:"elevated"
+                size_hint:(.7, .9)
+                md_bg_color:"#ffffff"
+                shadow_softness:2
+                shadow_offset:(0, 1)
+                pos_hint: {"center_y": 1, "center_x": .5}
+                MDRelativeLayout: ##Container for label
+                    MDLabel: ##Name label   
+                        adaptive_size:True
+                        color:"black"
+                        pos_hint: {"center_y": 1.1, "left": 1}
+                        bold:True
+                        font_style:"H4"
+                        text: root.name
+                    MDBoxLayout: ##Container for the image
+                        pos_hint: {"center_y": .55, "center_x": .5}
+                        orientation:"vertical"
+                        size_hint: (1.2, 1.2)
+                        FitImage: ##The image of the frog
+                            keep_ratio: True
+                            source:root.source
+
+            MDRelativeLayout: ##Container for the label at the bottom
+                orientation: "horizontal"
+                pos_hint: {"center_x": .5, "center_y": .2}
+                width: root.width
+
+                MDLabel: ##The message beneath the frog image
+                    size_hint: None, None
+                    text: root.message
+                    adaptive_size: False
+                    color: "black"
+                    font_style: "H5"
+                    pos_hint: {"center_x": .51, "center_y": .7}
+                    width: root.width - 2
